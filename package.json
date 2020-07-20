@@ -1,0 +1,28 @@
+{
+  "name": "julian-labook8",
+  "version": "1.0.0",
+  "description": "projeto da semana",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^14.0.23",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "knex": "^0.21.2",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/future4code/julian-labook8.git"
+  },
+  "author": "Felipe, Bernado, Max, Jaqueline",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/future4code/julian-labook8/issues"
+  },
+  "homepage": "https://github.com/future4code/julian-labook8#readme"
+}
