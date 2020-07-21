@@ -4,9 +4,10 @@
   "description": "projeto da semana",
   "main": "index.js",
   "dependencies": {
+    "@types/express": "^4.17.0",
     "@types/node": "^14.0.23",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.0",
     "knex": "^0.21.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
