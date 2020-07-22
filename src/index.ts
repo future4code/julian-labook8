@@ -56,6 +56,42 @@ app.post("/signup", async (req:Request, res:Response) =>{
     await BasedataBase.destroyConnection();
 } )
 
+app.post("/login", async (req:Request, res:Response) => {
+    try {
+        if(!req.body.email || req.body.email.indexOf("@") === -1){
+            console.log("Invalid Email :(")
+        }
+
+        const userData = {
+            email:req.body.email,
+            password:req.body.password
+        }
+
+        const useDb = new UseDatabase()
+        const user = await useDb.getByEmail(userData.email)
+
+        const hashManeger = new HashManeger()
+        const comparePassword = await hashManeger.compare(userData.password, user.password)
+
+        if(!comparePassword){
+            throw new Error("invalid Password")
+        }
+
+        const authenticator = new Authenticator()
+        const token = await authenticator.generateToken({id: user.id})
+
+        res.status(200).send({
+            token
+        })
+    } catch (err) {
+        res.status(400).send({
+            message:err.massage
+        })
+    }
+})
+
+
+
 const server = app.listen(process.env.DB_PORT || 3000, () => {
     if(server){
         const address = server.address() as AddressInfo;
