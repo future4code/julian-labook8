@@ -5,4 +5,3 @@ export class IdGenertor{
         return v4()
     };
 }
-const idGenerator = new IdGenertor();

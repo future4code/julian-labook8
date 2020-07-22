@@ -5,7 +5,7 @@ interface AuthenticatorData {
 }
 
 export class Authenticator{
-    private static EXPRESS_IN = "20mim"
+    private static EXPRESS_IN = process.env.EXPRESS_IN
 
     generateToken(input:AuthenticatorData):string{
         const token = jwt.sign(
