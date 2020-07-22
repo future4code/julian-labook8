@@ -2,7 +2,7 @@ import { BasedataBase } from "./BaseDataBase";
 
 export class UseDatabase extends BasedataBase{
     private static TABLE_NAME = "Users_LaBook"
-    public createUser = async(
+     createUser = async(
         id:string,
         email:string,
         name:string,
