@@ -4,7 +4,6 @@ interface AuthenticatorData {
   id: string;
 }
 
- felipe
 export class Authenticator{
     private static EXPRESS_IN = process.env.EXPRESS_IN
 

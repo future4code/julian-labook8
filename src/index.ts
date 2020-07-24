@@ -7,6 +7,7 @@ import { IdGenertor } from './services/IdGenerator';
 import { UseDatabase } from './data/UseDataBase';
 import { Authenticator } from './services/Authenticator';
 import { BasedataBase } from './data/BaseDataBase';
+import { AddFriendDatabase } from './data/AddFriendDataBase';
 
 dotenv.config()
 
@@ -90,6 +91,34 @@ app.post("/login", async (req:Request, res:Response) => {
     }
 })
 
+app.post("/add", async (req:Request, res:Response) => {
+    try {
+        if(!req.body.idFriend){
+            throw new Error("Invalid ID :<")
+        }
+
+        const userData = {
+            idFriend:req.body.idFriend,
+            token:req.body.token
+        };
+
+        const verifyToken = new Authenticator()
+        const compareToken = await verifyToken.getData(userData.token)
+
+        const useDb = new AddFriendDatabase()
+         await useDb.addFriend(userData.idFriend, compareToken.id)
+
+        const result = console.log("voces agora são amigos :)")
+        res.status(200).send({
+            result
+        })
+        
+    }catch (err) {
+        res.status(400).send({
+            message:err.massage
+        })
+    }
+})
 
 
 const server = app.listen(process.env.DB_PORT || 3000, () => {
